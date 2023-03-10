@@ -12,10 +12,6 @@ app.get('/', (_, res) => {
   res.send('Hello World!')
 });
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-});
-
 app.get('/list_files', (_, res) => {
   res.json([
     {
@@ -30,7 +26,10 @@ app.get('/list_files', (_, res) => {
 })
 
 app.get('/get_file/:file_name', (req, res) => {
-  console.log(req.params.file_name)
   file_name = req.params.file_name
   res.download(base_path + file_name, file_name)
 })
+
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`)
+});
